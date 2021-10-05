@@ -1,25 +1,21 @@
 <template>
-  <div>
-    <h1>{{ name }}</h1>
-    <input v-model="name" />
-    <button @click="onClick">Click me</button>
-  </div>
+<div>
+    <h1>{{name}}</h1>
+    <button @click="onclick">click Me</button>
+</div>
 </template>
-
 <script>
-export default {
-  data() {
-    return {
-      name: "About me im awesome"
-    };
+export default{
+  data(){
+      return {
+         name:"About me is awsome" 
+      };
   },
-  methods: {
-    onClick() {
-      alert(this.name);
-    }
-  }
+   methods:{
+     onclick(){
+         alert(this.name);
+     }
+ }
 };
-</script>
 
-<style>
-</style>
+</script>

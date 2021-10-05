@@ -1,7 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const bodyparser = require('body-parser');
-
+const cors=require('cors');
 const mongoose = require("mongoose");
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
@@ -14,13 +14,18 @@ dotenv.config();
 
 const app = express();
 
+app.use(cors());
 app.use(morgan('dev'));
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: false }));
 
 const productRoutes = require("./routes/product");
 const categoryRoutes = require("./routes/category");
+const ownerRoutes = require("./routes/owner");
+
 app.use("/api", productRoutes);
+app.use("/api", categoryRoutes);
+app.use("/api", ownerRoutes);
 
 mongoose.connect("mongodb://localhost:27017/server1", { useNewUrlParser: true, useUnifiedTopology: true },
     err => {
