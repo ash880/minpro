@@ -1,7 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const bodyparser = require('body-parser');
-const cors=require('cors');
+const cors = require('cors');
 const mongoose = require("mongoose");
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
@@ -27,12 +27,12 @@ app.use("/api", productRoutes);
 app.use("/api", categoryRoutes);
 app.use("/api", ownerRoutes);
 
-mongoose.connect("mongodb://localhost:27017/server1", { useNewUrlParser: true, useUnifiedTopology: true },
+mongoose.connect("mongodb+srv://root:test123@cluster0.kweyw.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true },
     err => {
         if (err) {
             console.log(err);
         } else {
-            console.log("Conneted to local host");
+            console.log("Conneted to database ");
         }
     });
 

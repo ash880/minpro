@@ -7,7 +7,7 @@ router.post('/owners', async(req, res) => {
         owner.about = req.body.about;
         await owner.save();
         res.json({
-            status: true,
+            success: true,
             message: "Sucesfully created a new owner"
         });
     } catch (err) {

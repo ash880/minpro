@@ -1,17 +1,17 @@
 const product = require('../models/product')
 
-const router = require('express').Router()
+const router = require('express').Router();
 const Product = require("../models/product");
 const upload = require("../middlewares/upload-photo");
 router.post('/products', upload.single("photo"), async(req, res) => {
     try {
         let product = new Product();
-        product.owner=req.body.ownerID;
-        product.categoryID=req.body.categoryID;
-        product.price=req.body.price;
+        product.ownerID = req.body.ownerID;
+        product.categoryID = req.body.categoryID;
+        product.price = req.body.price;
         product.title = req.body.title;
         product.description = req.body.description;
-        product.photo = req.body.photo;
+        product.photo = req.file.location;
         product.stockQuantity = req.body.stockQuantity;
         await product.save();
         res.json({
@@ -71,7 +71,7 @@ router.put("/products/:id", upload.single("photo"), async(req, res) => {
         }, { upsert: true });
         res.json({
             success: true,
-            updatedproduct: product
+            updatedProduct: product
         });
     } catch (err) {
         res.status(500).json({

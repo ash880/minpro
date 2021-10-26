@@ -11,7 +11,7 @@
                     <!-- Category drop down-->
                     <div class="a-spacing-top-medium">
                         <label>Category</label>
-                        <select class="a-select-option" v-model="ownerID">
+                        <select class="a-select-option" v-model="categoryID">
                             <option v-for="category in categories" 
                             :value="category._id" 
                             :key="category._id">{{category.type}}</option>
@@ -20,9 +20,9 @@
                     <!-- owner drop down-->
                     <div class="a-spacing-top-medium">
                         <label>Owner</label>
-                        <select class="a-select-option">
+                        <select class="a-select-option" v-model="ownerID">
             <option v-for="owner in owners" 
-                            :value="category._id" 
+                            :value="owner._id" 
                             :key="owner._id">{{owner.name}}</option>
                         </select>
                     </div>
@@ -112,12 +112,12 @@ export default {
          price:0,
          description:"",
          selectedFile:null,
-         stockQuantity:1,
+         stockQuantity:1,  
          fileName:""
      };  
     },
     methods:{
-        onFileSelected(event)
+        onFileSelected(event) 
         {
             this.selectedFile=event.target.files[0];
             console.log(this.selectedFile);

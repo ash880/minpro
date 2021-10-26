@@ -12,7 +12,7 @@ const s3 = new aws.S3();
 const upload = multer({
     storage: multerS3({
         s3: s3,
-        bucket: "amazon-clone-v1",
+        bucket: "amazon-type",
         acl: "public-read",
         metadata: (req, file, cb) => {
             cb(null, { fieldName: file.fieldname });
